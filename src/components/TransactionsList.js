@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Transaction from "./Transaction";
 
 function TransactionsList({ transactions, setTransactions, search, setSearch }) {
@@ -6,7 +6,7 @@ function TransactionsList({ transactions, setTransactions, search, setSearch }) 
     fetch("http://localhost:8001/transactions")
       .then((r) => r.json())
       .then((data) => setTransactions(data))
-  },[])
+  },[setTransactions])
 
   const filteredTransactions = transactions.filter((transaction) => transaction.description.toLowerCase().includes(search.toLowerCase()))
 
